@@ -5,6 +5,7 @@ import datetime
 
 path = "/"
 asp_path = "/"
+Folder = ""
 numFolders = (0)
 
 ########################################
@@ -185,6 +186,5 @@ ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 print ("\nPROGRAM FINISHED at [" + st + "]")
-
 
 
