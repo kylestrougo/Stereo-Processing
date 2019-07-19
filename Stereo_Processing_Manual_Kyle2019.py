@@ -405,7 +405,6 @@ os.system(str_image_vrt2)
 
 
 
-
 #Generation of .info file for Openspace
 print("\nGenerating the .info file for Openspace\n")
 info = ("touch " + path + Folder + ".info")
