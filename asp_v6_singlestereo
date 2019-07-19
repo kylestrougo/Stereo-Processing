@@ -1,0 +1,100 @@
+#!/bin/bash
+#
+# ASP version 6 - 2019
+# run this script from the directory where 2 IMG files (stereo pairs) are stored 
+# 
+
+#filenumber="${PWD##*/}"
+filenumber=$3
+
+#line=$filenumber
+line=$(($filenumber + 1))
+
+## uses CTX CSV to determine the right and left file names 
+left=$(awk -F"," -v n=$line 'FNR == n{print substr($1,0,26)}' $1/CTX_*.csv)
+right=$(awk -F"," -v n=$line 'FNR == n{print substr($2,0,26)}' $1/CTX_*.csv)
+
+maxd=1000000
+
+# ----------------------------------------------------------------------------------- #
+echo "filenum $filenumber" >> $1/log
+echo "line  $line" >> $1/log
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] Process started on `hostname`" >> $1/log 
+ #converts IMG to cub
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] mroctx2isis from=$2/$left.IMG to=$2/$left.cub" >> $1/log
+
+	mroctx2isis from=$2/$left.IMG to=$2/$left.cub &>> $1/log
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] mroctx2isis from=$2/$right.IMG to=$2/$right.cub" >> $1/log
+
+	mroctx2isis from=$2/$right.IMG to=$2/$right.cub &>> $1/log
+ #finds associated spicekernels
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] spiceinit from=$2/$left.cub" >> $1/log
+
+	spiceinit from=$2/$left.cub &>> $1/log
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] spiceinit from=$2/$right.cub" >> $1/log
+
+	spiceinit from=$2/$right.cub &>> $1/log
+ #calibration
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] ctxcal from=$2/$left.cub to=$2/$left.cal.cub" >> $1/log
+
+	ctxcal from=$2/$left.cub to=$2/$left.cal.cub &>> $1/log
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] ctxcal from=$2/$right.cub to=$2/$right.cal.cub" >> $1/log
+
+	ctxcal from=$2/$right.cub to=$2/$right.cal.cub &>> $1/log
+ #removes vertical striping 
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] ctxevenodd from=$2/$right.cub to=$2/$right.levleo.cub" >> $1/log
+
+	ctxevenodd from=$2/$right.cal.cub to=$2/$right.levleo.cub &>> $1/log
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] ctxevenodd from=$2/$left.cub to=$2/$left.levleo.cub" >> $1/log
+
+	ctxevenodd from=$2/$left.cal.cub to=$2/$left.levleo.cub &>> $1/log
+#bundle adjust 1 
+#echo "[ `date '+%Y%m%d_%H:%M:%S'` ] bundle_adjust $left.levleo.cub $right.levleo.cub -o ba_product_eo/ba_product" >> ./log
+
+#	bundle_adjust $left.levleo.cub $right.levleo.cub -o ba_product_eo/ba_product &>> ./log
+
+ #map projection
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] cam2map4stereo.py $2/$left.levleo.cub $2/$right.levleo.cub" >> $1/log
+
+	cam2map4stereo.py $2/$left.levleo.cub $2/$right.levleo.cub &>> $1/log
+
+ #bundle_adjustment 
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] bundle_adjust $2/$left.map.cub $2/$right.map.cub -o $2/ba_product_map/ba_product" >> $1/log
+
+	bundle_adjust $2/$left.map.cub $2/$right.map.cub -o $2/ba_product_map/ba_product &>> $1/log
+ #stereo 
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] stereo -s ./stereo.default_ctx $2/$left.levleo.map.cub $2/$right.levleo.map.cub productb/product --bundle-adjust-prefix ba_product_map/ba_product" >> $1/log
+
+	stereo -s $2/stereo.default_ctx $2/$left.map.cub $2/$right.map.cub $2/productb/product --bundle-adjust-prefix $2/ba_product_map/ba_product &>> $1/log
+
+ #aligns with MOLA 
+echo "[ `date '+%Y%m%d_%H:%M:%S'`] pc_align --num-iterations 2000 --save-inv-transform --max-displacement $maxd --highest-accuracy productb/product-PC.tif ../*mola.csv -o $2/dem_align/align --datum D_MARS " >> $1/log
+	pc_align --num-iterations 2000 --save-inv-transform --max-displacement $maxd --highest-accuracy $2/productb/product-PC.tif $1/*mola.csv -o $2/dem_align/align --datum D_MARS &>> $1/log 
+
+ #low-res DEM for map-projecting purposes
+#echo "[ `date '+%Y%m%d_%H:%M:%S'`] point2dem productb/product-PC.tif -s 100 --dem-hole-fill-len 50 -o productb/low_res -r mars"  >> ./log 
+#	point2dem productb/product-PC.tif -s 100 --dem-hole-fill-len 50 -o productb/low_res -r mars
+
+ #generates orthoimage and heightmap
+echo "[ `date '+%Y%m%d_%H:%M:%S'`] point2dem -r mars -s 18 dem_align/align-trans_reference.tif -o $2/DEM_high" >> $1/log
+	point2dem -r mars -s 18 $2/dem_align/align-trans_reference.tif -o $2/DEM_high &>> $1/log
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'`] point2dem -r mars -s 18 dem_align/align-trans_reference.tif --orthoimage productb/product-L.tif -o $2/DEM_high" >> $1/log
+	point2dem -r mars -s 6 $2/dem_align/align-trans_reference.tif --orthoimage $2/productb/product-L.tif -o $2/DEM_final --no-dem &>> $1/log
+
+ #adjusts height with reference to MOLA
+echo "[ `date '+%Y%m%d_%H:%M:%S'`] dem_geoid DEM_high-DEM.tif -o $2/DEM_high-DEM" >> $1/log
+	dem_geoid $2/DEM_high-DEM.tif -o $2/DEM_high-DEM &>> $1/log
+ 
+
+
+echo "[ `date '+%Y%m%d_%H:%M:%S'` ] Process finished on `hostname`" >> $1/log
+
+# ----------------------------------------------------------------------------------- #
+
