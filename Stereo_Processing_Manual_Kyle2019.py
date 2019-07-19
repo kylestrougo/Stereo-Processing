@@ -400,7 +400,7 @@ os.system(str_image_vrt1)
 
 image_vrt2 = ("gdalbuildvrt " + path + Folder + "_texture.vrt -te -180 -90 180 90 -addalpha " + Folder + "_texture_longlat.tif")
 str_image_vrt2 = str(image_vrt2)
-print("\nRunning... " + str_height_vrt2)
+print("\nRunning... " + str_image_vrt2)
 os.system(str_image_vrt2)
 
 
