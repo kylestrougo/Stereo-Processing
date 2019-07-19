@@ -252,7 +252,7 @@ print("-------------------------------")
 
 print("--> Heightmap Mosaicing <--")
 print("-- This next step utilizes the \"Stereo_Gui\" to view the height files (DEM_high-DEM-adj.tif) and image files (DEM_final-DRG.tif) from each folder")
-print ("-- Stereo_Gui will open all heightmap layers once you go to \"View\" and click \"Overlay Georeferenced Images\" and you will evaluate each layer and **note which ones to keep**")
+print ("-- Stereo_Gui will open all layers once you go to \"View\" and click \"Overlay Georeferenced Images\" and you will evaluate each layer and **note which ones to keep**")
 print("-- You can also enable the \"Hillshade\" (only for heightmap) button in the same dropdown")
 print("")
 
