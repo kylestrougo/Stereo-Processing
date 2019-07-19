@@ -184,7 +184,7 @@ print("HeightFile=\"Olympus_Mons_heightmap.vrt\"")
 ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
-print ("\nPROGRAM FINISHED at [" + st + "]"
+print ("\nPROGRAM FINISHED at [" + st + "]")
 
 
 
