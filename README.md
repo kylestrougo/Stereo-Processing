@@ -1,9 +1,9 @@
 # Stereo-Processing
 
 ## Table of Contents
-*  [General Info]  (# General-info)
-*  [Technologies]  (# Technologies)
-*  [Setup]         (# Setup)
+*  [General Info]  (#General-info)
+*  [Technologies]  (#Technologies)
+*  [Setup]         (#Setup)
 
 
 #  General-info
