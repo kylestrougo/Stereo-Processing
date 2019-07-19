@@ -7,12 +7,12 @@ path = "/"
 asp_path = "/"
 numFolders = (0)
 
-#Heightmap Mosaicing 
+#Heightmap Mosaicing
 
 print("--> Heightmap Mosaicing <--")
-print("-- This next step utilizes the \"Stereo_Gui\" to view the heightmap.tif (DEM_high-DEM-adj.tif) from each folder")
-print ("-- Stereo_Gui will open all heightmap layers once you go to \"View\" and click \"Overlay Georeferenced Images\" and you will evaluate each layer and **note which ones to keep**")
-print("-- You can also enable the \"Hillshade\"  button in the same dropdown")
+print("-- This next step utilizes the \"Stereo_Gui\" to view the height files (DEM_high-DEM-adj.tif) and image files (DEM_final-DRG.tif) from each folder")
+print ("-- Stereo_Gui will open all layers once you go to \"View\" and click \"Overlay Georeferenced Images\" and you will evaluate each layer and **note which ones to keep**")
+print("-- You can also enable the \"Hillshade\" (only for heightmap) button in the same dropdown")
 print("")
 
 ready = "null"
@@ -30,7 +30,7 @@ print ("Running... " + str_mosaic)
 os.system(str_mosaic)
 print ("done -----------------------")
 
-print ("--> Next you will enter the valid layer numbers that you wish to keep for your heightmap mosaic")
+print ("--> Next you will enter the valid layer numbers that you wish to keep for your height map mosaic")
 ready = "null"
 while True:
 	ready = raw_input(str(" > Type \"ready\" to begin mosaicing process:  "))
@@ -39,10 +39,10 @@ while True:
 	else:
 		pass
 
-#Takes user raw_input for valid height layers 
+#Takes user input for valid height layers 
 array_layers = []
 while True:
-  map_layers = raw_input((" > Type the layers you want to keep **one at a time** (type \"-1\" when finished): "))
+  map_layers = input((" > Type the layers you want to keep **one at a time** (type \"-1\" when finished): "))
   if map_layers == (-1):
     break
   else:
@@ -62,6 +62,24 @@ str_dem_height = str(path_command_layer)
 print("\nRunning.. " + str_dem_height)
 os.system(str_dem_height)
 
+print ("--> Next you will enter the valid layer numbers that you wish to keep for your image map mosaic")
+ready = "null"
+while True:
+	ready = raw_input(str(" > Type \"ready\" to begin mosaicing process:  "))
+	if ready == ("ready" or "Ready"):
+		break
+	else:
+		pass
+
+#Takes user input for valid height layers 
+array_layers = []
+while True:
+  map_layers = input((" > Type the layers you want to keep **one at a time** (type \"-1\" when finished): "))
+  if map_layers == (-1):
+    break
+  else:
+    array_layers.append(map_layers)
+
 
 #For loop generates image dem_mosaic command with kept layers
 dem_mosaic_image = ""
@@ -76,7 +94,7 @@ str_dem_image = str(path_command_layer_image)
 
 print("\nRunning.. " + str_dem_image)
 os.system(str_dem_image)
-
+#GOOD TILL HERE
 
 #Hole filling command
 print("\nExecuting hole filling")
@@ -100,7 +118,7 @@ str_height_vrt2 = str(height_vrt2)
 print("\nRunning... " + str_height_vrt2)
 os.system(str_height_vrt2)
 
-#Final file generation - image vrt's 
+#Final File Generation - image vrt's 
 image_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_texture-tile-0.tif " + Folder + "_texture_longlat.tif")
 str_image_vrt1 = str(image_vrt1)
 print("\nRunning... " + str_image_vrt1)
@@ -126,7 +144,6 @@ print("Name=\"Olympus Mons\"")
 print("Identifier=\"olympus_mons\"")
 print("ColorFile=\"Olympus_Mons_mapro_texture.vrt\"")
 print("HeightFile=\"Olympus_Mons_heightmap.vrt\"")
-
 
 ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
