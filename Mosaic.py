@@ -7,28 +7,34 @@ path = "/"
 asp_path = "/"
 numFolders = (0)
 
-#Heightmap Mosaicing
+########################################
+#MOSAICING
 
-print("--> Heightmap Mosaicing <--")
+print("--> Mosaicing Process <--")
 print("-- This next step utilizes the \"Stereo_Gui\" to view the height files (DEM_high-DEM-adj.tif) and image files (DEM_final-DRG.tif) from each folder")
 print ("-- Stereo_Gui will open all layers once you go to \"View\" and click \"Overlay Georeferenced Images\" and you will evaluate each layer and **note which ones to keep**")
-print("-- You can also enable the \"Hillshade\" (only for heightmap) button in the same dropdown")
+print("-- You can also enable the \"Hillshade\" button (only for heightmap) in the same dropdown")
 print("")
 
+
+#HEIGHT MOSAIC
 ready = "null"
 while True:
-	ready = raw_input(str(" > Type \"ready\" to begin mosaicing process:  "))
+	ready = raw_input(str(" > Type \"ready\" to preview all height layers (note which to keep):  "))
 	if ready == ("ready" or "Ready"):
 		break
 	else:
 		pass
+
 
 #Generates command to open stereo_gui for all heightmap folders 
 str_numFolders = str(numFolders)
 str_mosaic = str("stereo_gui " + path + "{0.." + str_numFolders + "}/DEM_high-DEM-adj.tif")
 print ("Running... " + str_mosaic)
 os.system(str_mosaic)
-print ("done -----------------------")
+print ("-----------------------")
+
+
 
 print ("--> Next you will enter the valid layer numbers that you wish to keep for your height map mosaic")
 ready = "null"
@@ -39,6 +45,7 @@ while True:
 	else:
 		pass
 
+
 #Takes user input for valid HEIGHT layers 
 array_layers = []
 while True:
@@ -47,6 +54,7 @@ while True:
     break
   else:
     array_layers.append(map_layers)
+
 
 #For loop generates heightmap dem_mosaic command with kept layers 
 dem_mosaic = ""
@@ -61,6 +69,27 @@ str_dem_height = str(path_command_layer)
 
 print("\nRunning.. " + str_dem_height)
 os.system(str_dem_height)
+print ("-----------------------")
+
+#######################################
+
+#IMAGE MOSAIC
+ready = "null"
+while True:
+	ready = raw_input(str(" > Type \"ready\" to preview all image layers (note which to keep):  "))
+	if ready == ("ready" or "Ready"):
+		break
+	else:
+		pass
+
+#Generates command to open stereo_gui for all image folders 
+str_numFolders = str(numFolders)
+str_mosaic = str("stereo_gui " + path + "{0.." + str_numFolders + "}/DEM_final-DRG.tif")
+print ("Running... " + str_mosaic)
+os.system(str_mosaic)
+print ("-----------------------")
+
+
 
 print ("--> Next you will enter the valid layer numbers that you wish to keep for your image map mosaic")
 ready = "null"
@@ -70,6 +99,7 @@ while True:
 		break
 	else:
 		pass
+
 
 #Takes user input for valid IMAGE layers 
 array_layers = []
@@ -96,13 +126,15 @@ print("\nRunning.. " + str_dem_image)
 os.system(str_dem_image)
 
 
-#Hole filling command
+
+#Height map hole filling 
 print("\nExecuting hole filling")
 #gdal_fillnodata.py -md 25 -si 1 Ganges_heightmap-tile-0.tif
 hole_fill = ("gdal_fillnodata.py -md 25 -si 1 " + path + Folder + "_heightmap-tile-0.tif")
 str_hole_fill = str(hole_fill)
 print("\nRunning... " + str_hole_fill)
 os.system(str_hole_fill)
+
 
 
 #Final file generation - heightmap vrt's
@@ -118,6 +150,7 @@ str_height_vrt2 = str(height_vrt2)
 print("\nRunning... " + str_height_vrt2)
 os.system(str_height_vrt2)
 
+
 #Final File Generation - image vrt's 
 image_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_texture-tile-0.tif " + Folder + "_texture_longlat.tif")
 str_image_vrt1 = str(image_vrt1)
@@ -128,6 +161,9 @@ image_vrt2 = ("gdalbuildvrt " + path + Folder + "_texture.vrt -te -180 -90 180 9
 str_image_vrt2 = str(image_vrt2)
 print("\nRunning... " + str_height_vrt2)
 os.system(str_image_vrt2)
+
+
+
 
 #Generation of .info file for Openspace
 print("\nGenerating the .info file for Openspace\n")
@@ -148,7 +184,7 @@ print("HeightFile=\"Olympus_Mons_heightmap.vrt\"")
 ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
-print ("\nPROGRAM FINISHED at [" + st + "]")
+print ("\nPROGRAM FINISHED at [" + st + "]"
 
 
 
