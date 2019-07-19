@@ -280,7 +280,7 @@ while True:
 	else:
 		pass
 
-#Takes user input for valid height layers 
+#Takes user input for valid HEIGHT layers 
 array_layers = []
 while True:
   map_layers = input((" > Type the layers you want to keep **one at a time** (type \"-1\" when finished): "))
@@ -312,7 +312,7 @@ while True:
 	else:
 		pass
 
-#Takes user input for valid height layers 
+#Takes user input for valid IMAGE layers 
 array_layers = []
 while True:
   map_layers = input((" > Type the layers you want to keep **one at a time** (type \"-1\" when finished): "))
@@ -335,7 +335,7 @@ str_dem_image = str(path_command_layer_image)
 
 print("\nRunning.. " + str_dem_image)
 os.system(str_dem_image)
-#GOOD TILL HERE
+
 
 #Hole filling command
 print("\nExecuting hole filling")
