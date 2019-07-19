@@ -2,8 +2,10 @@ import time
 import os
 import datetime
 
-
+#directory path 
 path = "/"
+
+#path to asp_v6_singlestereo
 asp_path = "/"
 
 #ASP Run 
@@ -11,14 +13,14 @@ asp_path = "/"
 
 
 #number of stereo pair folders
-numFolders = ((24//2))
+numFolders = (0)
 int_numFolders = (int(numFolders))
-#path to asp
+
 
 print ("--> ASP will be run on each stereo pair folder <--\n")
 print("--> You can follow along with the process in the log file which will be located in your location folder <--\n")
 #iterates through stereo pair folders
-for x in range(12, 6, -1):
+for x in range(0, int_numFolders, 1):
 	
 	y = str(x)
 	CTX_path = path 
