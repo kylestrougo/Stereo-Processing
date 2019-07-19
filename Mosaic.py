@@ -3,9 +3,9 @@ import os
 import datetime
 
 
-path = "/hd/na10/isis3/Kyle/Arsia_MonsV3/"
-asp_path = "/hd/na10/isis3/Kyle/"
-numFolders = (10)
+path = "/"
+asp_path = "/"
+numFolders = (0)
 
 #Heightmap Mosaicing 
 
@@ -76,7 +76,7 @@ str_dem_image = str(path_command_layer_image)
 
 print("\nRunning.. " + str_dem_image)
 os.system(str_dem_image)
-#GOOD TILL HERE
+
 
 #Hole filling command
 print("\nExecuting hole filling")
@@ -127,10 +127,11 @@ print("Identifier=\"olympus_mons\"")
 print("ColorFile=\"Olympus_Mons_mapro_texture.vrt\"")
 print("HeightFile=\"Olympus_Mons_heightmap.vrt\"")
 
+
 ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 print ("\nPROGRAM FINISHED at [" + st + "]")
 
-print ("PROGRAM FINISHED")
+
 
