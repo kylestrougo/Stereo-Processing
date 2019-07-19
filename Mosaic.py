@@ -119,7 +119,7 @@ for layer in array_layers:
   dem_mosaic_image = (dem_mosaic_image + command_layer_image)
 
 full_command_layer_image = ("dem_mosaic " + dem_mosaic_image + " -o " + Folder + "_texture")
-path_command_layer_image = (path + full_command_layer_image)
+path_command_layer_image = (full_command_layer_image)
 str_dem_image = str(path_command_layer_image)
 
 print("\nRunning.. " + str_dem_image)
