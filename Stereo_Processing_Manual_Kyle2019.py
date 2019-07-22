@@ -304,7 +304,7 @@ for layer in array_layers:
 	command_layer = (path + str_layer + "/DEM_high-DEM-adj.tif ")
 	dem_mosaic = (dem_mosaic + command_layer)
 
-full_command_layer = ("dem_mosaic "+ dem_mosaic + " -o " + Folder + "_heightmap")
+full_command_layer = ("dem_mosaic "+ dem_mosaic + " -o " + path + Folder + "_heightmap")
 path_command_layer = (full_command_layer)
 str_dem_height = str(path_command_layer)
 
@@ -359,8 +359,8 @@ for layer in array_layers:
   command_layer_image = (path + str_layer + "/DEM_final-DRG.tif ")
   dem_mosaic_image = (dem_mosaic_image + command_layer_image)
 
-full_command_layer_image = ("dem_mosaic " + dem_mosaic_image + " -o " + Folder + "_texture")
-path_command_layer_image = (full_command_layer_image)
+full_command_layer_image = ("dem_mosaic " + dem_mosaic_image + " -o " + path + Folder + "_texture")
+path_command_layer_image = (path + full_command_layer_image)
 str_dem_image = str(path_command_layer_image)
 
 print("\nRunning.. " + str_dem_image)
@@ -381,27 +381,28 @@ os.system(str_hole_fill)
 #Final file generation - heightmap vrt's
 print("FINAL FILE GENERATION \n")
 
-height_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_heightmap-tile-0.tif "+ Folder + "_heightmap_longlat.tif")
+height_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_heightmap-tile-0.tif " + path + Folder + "_heightmap_longlat.tif")
 str_height_vrt1 = str(height_vrt1)
 print("\nRunning... " + str_height_vrt1)
 os.system(str_height_vrt1)
 
-height_vrt2 = ("gdalbuildvrt " + path + Folder + "_heightmap.vrt -te -180 -90 180 90 " + Folder + "_heightmap_longlat.tif")
+height_vrt2 = ("gdalbuildvrt " + path + Folder + "_heightmap.vrt -te -180 -90 180 90 " + path + Folder + "_heightmap_longlat.tif")
 str_height_vrt2 = str(height_vrt2)
 print("\nRunning... " + str_height_vrt2)
 os.system(str_height_vrt2)
 
 
 #Final File Generation - image vrt's 
-image_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_texture-tile-0.tif " + Folder + "_texture_longlat.tif")
+image_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_texture-tile-0.tif " + path + Folder + "_texture_longlat.tif")
 str_image_vrt1 = str(image_vrt1)
 print("\nRunning... " + str_image_vrt1)
 os.system(str_image_vrt1)
 
-image_vrt2 = ("gdalbuildvrt " + path + Folder + "_texture.vrt -te -180 -90 180 90 -addalpha " + Folder + "_texture_longlat.tif")
+image_vrt2 = ("gdalbuildvrt " + path + Folder + "_texture.vrt -te -180 -90 180 90 -addalpha " + path + Folder + "_texture_longlat.tif")
 str_image_vrt2 = str(image_vrt2)
-print("\nRunning... " + str_image_vrt2)
+print("\nRunning... " + str_height_vrt2)
 os.system(str_image_vrt2)
+
 
 
 
