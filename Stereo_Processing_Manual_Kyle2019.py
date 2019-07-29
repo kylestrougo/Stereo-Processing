@@ -524,7 +524,7 @@ else:
 	image_mosaic()
 	info()
 
-#path = (dp + "/" + Folder + "/")
+
 
 print ("-------------------------------")
 
