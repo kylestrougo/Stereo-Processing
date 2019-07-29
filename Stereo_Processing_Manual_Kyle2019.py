@@ -20,12 +20,7 @@ import datetime
 
 #Takes user raw_input and creates working directory
 def start():
-
-	#dp = os.getcwd()
-	#asp_path = (dp + "/")
-	#folder = raw_input(str("> Type a location name to create a new folder (Olympus_Mons): "))
-	#path = (dp + "/" + folder + "/")
-
+	
 	os.system("mkdir " + path)
 
 	W = raw_input(str(" > Do you have your location coordinates? (y/n): "))
