@@ -35,7 +35,7 @@ def start():
 		#Google earth instructions
 		print("--------------------------------")
 		print ("")
-		print (" 1) Open Google Earth and navigate to Mars")
+		print (" 1) Open Google Earth and navigate to Moon/Mars")
 		print (" 2) Adjust zoom so that latitude and longitude are in 5 degree increments")
 		print (" 3) Click on the \"Add Image Overlay\" button at the top and adjust the green box around any 5 degree square then move the box over desired location")
 		print (" 4) Navigate to \"Location\" button and record coordinates to nearest degree")
@@ -535,7 +535,7 @@ if __name__ == '__main__':
 
 	print("Options:\n")
 	print("1) Image Fetch / Run ASP")
-	print("2) Run ASP on all folders")
+	print("2) Run ASP on select folders")
 	print("3) Height map mosaic")
 	print("4) Image map mosaic")
 	print("5) Generation of .info file\n")
