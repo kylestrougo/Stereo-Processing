@@ -448,7 +448,7 @@ def image_mosaic():
 
 	print("\nRunning.. " + str_dem_image)
 	os.system(str_dem_image)
-	#GOOD TILL HERE
+	
 
 
 	#Final File Generation - image vrt's 
