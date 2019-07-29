@@ -9,7 +9,6 @@
 ###############################################
 # Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
 # Necessary files: Sorted_Final_CTX_2018.csv , asp_v6_singlestereo
-# This manual guides you through generating coordinates, a .csv file, a mola.csv file, and runs an image fetch to gather all stereo pairs for desired location and calls NASA ASP Software on those pairs 
 ###############################################
 
 import numpy as np
