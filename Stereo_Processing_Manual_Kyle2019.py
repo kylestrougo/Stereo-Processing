@@ -412,7 +412,7 @@ def image_mosaic():
 		else:
 			pass
 
-#Generates command to open stereo_gui for all image folders 
+	#Generates command to open stereo_gui for all image folders 
 	str_numFolders = str(numFolders)
 	str_mosaic = str("stereo_gui " + path + "{0.." + str_numFolders + "}/DEM_final-DRG.tif")
 	print ("Running... " + str_mosaic)
@@ -481,15 +481,15 @@ def info():
 	print("Running... " + str_info)
 	os.system(str_info)
 	
-	I = open(path + Folder + ".info", "a")
-	I.write = ("Name=\"" + Folder + "\"")
-	I.write = ("Identifier=\"" + Folder + "\"") 
-	I.write = ("ColorFile=\"" + Folder + "_texture.vrt\"")
-	I.write = ("HeightFile=\"" + Folder + "_heightmap.vrt\"")
+	I = open(path + Folder + ".info", "w")
+	str_folder = str(Folder)
+	I.write("Name=\"" + str_folder + "\"")
+	I.write("\nIdentifier=\"" + str_folder + "\"") 
+	I.write("\nColorFile=\"" + str_folder + "_texture.vrt\"")
+	I.write("\nHeightFile=\"" + str_folder + "_heightmap.vrt\"")
 	I.close()
-
 	
-
+	print(str_folder + ".info file generated")
 
 ####
 numFolders = ""
@@ -574,14 +574,14 @@ if __name__ == '__main__':
 	ts = time.time()
 	st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
-	print("\n-> Relevant Files for Opensapce: \n\n")
-	print(" 1) Folder_Name_heightmap.vrt")
-	print(" 2) Folder_Name_texture.vrt")
-	print(" 3) Folder_Name_heightmap_longlat.tif")
-	print(" 4) Folder_Name_texture_longlat.tif")
-	print(" 5) Folder_Name_.info\n")
+	print("\n-> Relevant Files for Openspace: \n\n")
+	print(" 1) " + Folder + "_heightmap.vrt")
+	print(" 2) " + Folder + "_texture.vrt")
+	print(" 3) " + Folder + "_heightmap_longlat.tif")
+	print(" 4) " + Folder + "_texture_longlat.tif")
+	print(" 5) " + Folder + ".info\n")
 			
-	print ("\nPROGRAM FINISHED at [" + st + "]")
+	print ("\nPROGRAM FINISHED at [" + st + "]\n")
 
 	
 
