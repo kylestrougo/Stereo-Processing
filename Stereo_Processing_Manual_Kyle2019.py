@@ -4,7 +4,7 @@
 #Author: Kyle Strougo
 #Email: kstrougo@gmail.com
 #Date: 7/1/19
-#American Museum of Natural History
+#NASA/American Museum of Natural History
 
 ###############################################
 # Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
