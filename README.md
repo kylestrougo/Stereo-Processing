@@ -8,11 +8,11 @@
 
 #  General-info
 
-Stereo-Processing contains all the necessary files for digital terrain generation for Openspace software
+Stereo-Processing contains all the necessary files for digital terrain model generation for Openspace software
 
 Openspace is a NASA supported, open-source, interactive data visualization developed for planetary domes, flat screens, VR and networking for world organizations
 
-This program produces necessary .VRT and .TIF files for inputting Mars or Moon height and image maps into Openspace 
+This program generates necessary .VRT and .TIF files for inputting Mars or Moon height and image maps into Openspace 
 
 #  Technologies
 
