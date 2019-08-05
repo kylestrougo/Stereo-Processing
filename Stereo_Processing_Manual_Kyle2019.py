@@ -1,6 +1,6 @@
 ################################################
 
-# Stereo Processing Manual
+# Stereo Processing 
 # Author: Kyle Strougo
 # Email: kstrougo@gmail.com
 # Date: 7/1/19
