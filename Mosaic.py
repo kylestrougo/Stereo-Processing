@@ -1,6 +1,6 @@
 ################################################
 
-# Image and Height map Mosaicing 
+# Image and Height Map Mosaicing 
 # Author: Kyle Strougo
 # Email: kstrougo@gmail.com
 # Date: 7/1/19
