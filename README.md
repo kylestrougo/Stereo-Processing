@@ -25,7 +25,7 @@ https://ti.arc.nasa.gov/tech/asr/groups/intelligent-robotics/ngt/stereo/
 ---
 * Google Earth (version 7.3)
 ---
-* Sorted_Final_CTX_2018.csv
+* Sorted_Final_CTX_2019.csv
 * asp_v6_singlestereo
 
 #  Setup
