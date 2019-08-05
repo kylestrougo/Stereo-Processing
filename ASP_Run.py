@@ -9,7 +9,7 @@
 ###############################################
 # Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
 # Necessary files: asp_v6_singlestereo
-# This program guides you through image/height mosaicing process and produces necessary files for Openspace
+# This program runs asp_v6_singlestereo on each stereo pair folder for image/height DTM generation
 ###############################################
 
 import time
