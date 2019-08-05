@@ -20,6 +20,9 @@ This program generates necessary .VRT and .TIF files for inputting Mars or Moon 
 * NASA Integrated Software for Imagers and Spectrometers (ISIS)  (version 3.6.0)
 https://ti.arc.nasa.gov/tech/asr/groups/intelligent-robotics/ngt/stereo/ 
 ---
+* GDAL (version 3.0.1) 
+https://gdal.org/
+---
 * Google Earth (version 7.3)
 ---
 * Sorted_Final_CTX_2018.csv
