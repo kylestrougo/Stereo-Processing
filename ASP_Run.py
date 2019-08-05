@@ -34,8 +34,6 @@ def asp_run():
 		print("\n-> ASP FINISHED ON FOLDER " + y + " at [" + st + "]\n")
 
 	print("RELEVANT ASP OUTPUT for each folder: \n")
-	
-	print("RELEVANT ASP OUTPUT for each folder: \n")
 
 	print("1)  log : Each completed stereo pair will have a log file containing all the output for the process. This file is incredibly useful for troubleshooting, as it can tell you what went wrong and when")
 	print("2)  productb/product-PC.tif : The result of running the command \"stereo\". This is a Point Cloud File, and is used to then generate the heightmap and/or orthoimage if desired")
