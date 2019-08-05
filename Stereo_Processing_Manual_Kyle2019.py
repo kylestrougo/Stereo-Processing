@@ -454,7 +454,7 @@ def image_mosaic():
 
 	print("\nRunning.. " + str_dem_image)
 	os.system(str_dem_image)
-	#GOOD TILL HERE
+
 
 
 	#Final File Generation - image vrt's 
@@ -469,7 +469,6 @@ def image_mosaic():
 	str_image_vrt2 = str(image_vrt2)
 	print("\nRunning... " + str_image_vrt2)
 	os.system(str_image_vrt2)
-
 
 
 
@@ -525,7 +524,7 @@ else:
 	image_mosaic()
 	info()
 
-#path = (dp + "/" + Folder + "/")
+	
 
 print ("-------------------------------")
 
