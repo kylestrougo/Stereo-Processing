@@ -1,6 +1,6 @@
 ################################################
 
-# Stereo Processing 
+# Image and Height map Mosaicing 
 # Author: Kyle Strougo
 # Email: kstrougo@gmail.com
 # Date: 7/1/19
@@ -9,6 +9,7 @@
 ###############################################
 # Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
 # Necessary files: image/height dems
+# This program guides you through image/height map mosaicing for Openspace
 ###############################################
 
 import time
