@@ -9,7 +9,7 @@
 ###############################################
 # Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
 # Necessary files: Sorted_Final_CTX_2019.csv , asp_v6_singlestereo
-# This program guides you through the full digital terrrain map generation for a given location for Openspace 
+# This program guides you through the full digital terrrain map generation for a given Moon/Mars location for Openspace 
 # Contents: 
 # Generating coordinates, a .csv file, a MOLA.csv file, image fetch on stereo pairs for desired location,
 # NASA ASP run on stereo pairs, image/height mosaicing 
