@@ -9,7 +9,7 @@
 ###############################################
 # Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
 # Necessary files: image/height dems
-# This program guides you through image/height map mosaicing for Openspace
+# This program guides you through image/height map mosaicing and generation of necessary files for Openspace
 ###############################################
 
 import time
