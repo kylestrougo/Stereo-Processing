@@ -45,7 +45,7 @@ def asp_run():
 	
 	print("TROUBLESHOOTING: If you are not getting some of these files you may need to increase displacement in the ASP script")
 	print("- To increase displacement open up the asp_v6_singlestereo script and increase the \"maxd\" value at the top (avoid going above 5000)")
-	print("Save and re-run this program or manually run the asp on that folder (/HD/na10/isis3/Kyle/Olympus_Mons/3/asp_v6_singlestereo)")
+
 
 
 first = int(input(" > Type the folder to start on (type 0 if no preference) "))
