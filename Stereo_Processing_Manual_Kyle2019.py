@@ -4,11 +4,12 @@
 #Author: Kyle Strougo
 #Email: kstrougo@gmail.com
 #Date: 7/1/19
-#NASA/American Museum of Natural History
+#American Museum of Natural History
 
 ###############################################
 # Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
-# Necessary files: Sorted_Final_CTX_2018.csv , asp_v6_singlestereo
+# Necessary files: Sorted_Final_CTX_2019.csv , asp_v6_singlestereo
+# This manual guides you through generating coordinates, a .csv file, a mola.csv file, and runs an image fetch to gather all stereo pairs for desired location and calls NASA ASP Software on those pairs 
 ###############################################
 
 import numpy as np
@@ -20,7 +21,12 @@ import datetime
 
 #Takes user raw_input and creates working directory
 def start():
-	
+
+	#dp = os.getcwd()
+	#asp_path = (dp + "/")
+	#folder = raw_input(str("> Type a location name to create a new folder (Olympus_Mons): "))
+	#path = (dp + "/" + folder + "/")
+
 	os.system("mkdir " + path)
 
 	W = raw_input(str(" > Do you have your location coordinates? (y/n): "))
@@ -30,7 +36,7 @@ def start():
 		#Google earth instructions
 		print("--------------------------------")
 		print ("")
-		print (" 1) Open Google Earth and navigate to Moon/Mars")
+		print (" 1) Open Google Earth and navigate to Mars")
 		print (" 2) Adjust zoom so that latitude and longitude are in 5 degree increments")
 		print (" 3) Click on the \"Add Image Overlay\" button at the top and adjust the green box around any 5 degree square then move the box over desired location")
 		print (" 4) Navigate to \"Location\" button and record coordinates to nearest degree")
@@ -88,7 +94,7 @@ def image_fetch():
 		return list(set(a) & set(b))
 
 	###### IMPORT DATA ######
-	fileName = 'Sorted_Final_CTX_2018.csv' #Assumes the file is in the same directory. Otherwise specify directory.
+	fileName = 'Sorted_Final_CTX_2019.csv' #Assumes the file is in the same directory. Otherwise specify directory.
 	pathMrox = glob.glob('/hd/na10/isis3/mrox_xxxx_md5.txt/*_md5.txt') #Default path for Krypton
 	
 	fullPath = os.getcwd() + "/" + fileName
@@ -177,6 +183,8 @@ def image_fetch():
 					print('Image located.')
 
 	print (len(URL_list))
+	
+	len_URL = (len(URL_list))
 
 	###### IMAGE DOWNLOAD ######
 	#Can be changed depending on what OS is in use.
@@ -260,7 +268,7 @@ def image_fetch():
 def asp_run():
 	
 
-	print ("--> ASP will be run on each stereo pair folder <--\n")
+	print ("\n--> ASP will be run on each stereo pair folder <--\n")
 	print("--> You can follow along with the process in the log file which will be located in your location folder <--\n")
 
 	#iterates through stereo pair folders
@@ -448,11 +456,11 @@ def image_mosaic():
 
 	print("\nRunning.. " + str_dem_image)
 	os.system(str_dem_image)
-	
+	#GOOD TILL HERE
 
 
 	#Final File Generation - image vrt's 
-	print("FINAL IMAGE FILE GENERATION")	
+	print("\nFINAL IMAGE FILE GENERATION")	
 
 	image_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_texture-tile-0.tif " + path + Folder + "_texture_longlat.tif")
 	str_image_vrt1 = str(image_vrt1)
@@ -477,7 +485,7 @@ def info():
 	
 	I = open(path + Folder + ".info", "w")
 	str_folder = str(Folder)
-	I.write("Name=\"" + str_folder + "\"")
+	I.write("Name=\"" + str_folder + " CTX\"")
 	I.write("\nIdentifier=\"" + str_folder + "\"") 
 	I.write("\nColorFile=\"" + str_folder + "_texture.vrt\"")
 	I.write("\nHeightFile=\"" + str_folder + "_heightmap.vrt\"")
@@ -494,7 +502,7 @@ print ("\nPROGRAM STARTED AT [" + st + "]\n")
 			
 print ("	STEREO PROCESSING MANUAL 2019\n")
 print ("--> Move this file into the the desired directory for your new location folder and run the program <--\n")
-print ("--> Also move the  \"Sorted_Final_CTX_2018.csv\" and \"asp_v6_singlestereo\" into the same working directory <--\n\n")
+print ("--> Also move the  \"Sorted_Final_CTX_2019.csv\" and \"asp_v6_singlestereo\" into the same working directory <--\n\n")
 
 dp = os.getcwd()
 asp_path = (dp + "/")
@@ -519,7 +527,7 @@ else:
 	image_mosaic()
 	info()
 
-
+#path = (dp + "/" + Folder + "/")
 
 print ("-------------------------------")
 
