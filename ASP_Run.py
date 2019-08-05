@@ -1,3 +1,17 @@
+################################################
+
+# ASP Run
+# Author: Kyle Strougo
+# Email: kstrougo@gmail.com
+# Date: 7/1/19
+# American Museum of Natural History
+
+###############################################
+# Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
+# Necessary files: asp_v6_singlestereo
+# This program guides you through image/height mosaicing process and produces necessary files for Openspace
+###############################################
+
 import time
 import os
 import datetime
