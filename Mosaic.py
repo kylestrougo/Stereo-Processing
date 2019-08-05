@@ -165,8 +165,6 @@ def image_mosaic():
 	os.system(str_image_vrt2)
 
 
-
-
 #Generation of .info file for Openspace
 def info():
 	print("\nGenerating the .info file for Openspace\n")
@@ -186,6 +184,7 @@ def info():
 	print(str_folder + ".info file generated")
 
 
+	
 numFolders = input(str(" > Type the number of stereo pair folders: "))
 Folder = raw_input(" > Type the folder name: ")
 mosaic()
