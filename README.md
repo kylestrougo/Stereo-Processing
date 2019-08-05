@@ -21,7 +21,7 @@ This program generates necessary .VRT and .TIF files for inputting Mars or Moon 
 https://ti.arc.nasa.gov/tech/asr/groups/intelligent-robotics/ngt/stereo/ 
 ---
 * GDAL (version 3.0.1) 
-https://gdal.org/
+ https://gdal.org/
 ---
 * Google Earth (version 7.3)
 ---
