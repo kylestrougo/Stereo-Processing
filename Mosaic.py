@@ -1,3 +1,16 @@
+################################################
+
+# Stereo Processing 
+# Author: Kyle Strougo
+# Email: kstrougo@gmail.com
+# Date: 7/1/19
+# American Museum of Natural History / Openspace NASA Grant
+
+###############################################
+# Run on linux, assumes NASA Ames Stereo Pipeline and ISIS softwares are downloaded
+# Necessary files: image/height dems
+###############################################
+
 import time
 import os
 import datetime
