@@ -14,7 +14,7 @@ line=$(($filenumber + 1))
 left=$(awk -F"," -v n=$line 'FNR == n{print substr($1,0,26)}' $1/CTX_*.csv)
 right=$(awk -F"," -v n=$line 'FNR == n{print substr($2,0,26)}' $1/CTX_*.csv)
 
-maxd=1000000
+maxd=2000
 
 # ----------------------------------------------------------------------------------- #
 echo "filenum $filenumber" >> $1/log
