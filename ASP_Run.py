@@ -18,7 +18,7 @@ def asp_run():
 		st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 	
 		print("-> ASP STARTED ON FOLDER " + y + " at ["+ st +"]\n")
-		#moves asp into folder
+		#copies asp into folder
 		cp_string = str("cp " + asp_path + "asp_v6_singlestereo " + path + y)
 		print ("Running... " + cp_string)
 		os.system(cp_string)
