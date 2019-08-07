@@ -197,10 +197,12 @@ def info():
 	
 	print(str_folder + ".info file generated")
 
-
-	
+dp = os.getcwd()
+asp_path = (dp +"/")
+Folder = raw_input(str(" > Type an existing folder name in the current directory (Olympus_Mons): "))
+path = (asp_path + Folder + "/")
 numFolders = input(str(" > Type the number of stereo pair folders: "))
-Folder = raw_input(" > Type the folder name: ")
+
 mosaic()
 height_mosaic()
 image_mosaic()
