@@ -580,6 +580,13 @@ if __name__ == '__main__':
 	print(" 4) " + Folder + "_texture_longlat.tif")
 	print(" 5) " + Folder + ".info\n")
 			
+	print("\n--> For inputting into Openspace:\n")
+	print(" 1) On the computer with Openspace, open \"globebrowsing.asset\"")
+	print("  --> (Openspace-0.14.1/data/assets/customization)")
+	print(" 2) Under \"Mars\", \"openspace.absPath\" type:")
+	print("  --> \'Z:/isis3/ .. /" + Folder + "\',")
+	print(" 3) Save and re-launch Openspace")
+			
 	print ("\nPROGRAM FINISHED at [" + st + "]\n")
 
 	
