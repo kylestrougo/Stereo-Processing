@@ -60,8 +60,11 @@ def asp_run():
 
 
 
-first = int(input(" > Type the folder to start on (type 0 if no preference) "))
+dp = os.getcwd()
+asp_path = (dp +"/")
+Folder = raw_input(str(" > Type an existing folder name in the current directory (Olympus_Mons): "))
+path = (asp_path + Folder + "/")
 int_numFolders = int(input(" > Type the number of stereo pair folders: "))
+first = int(input(" > Type the folder to start on (type 0 if no preference) "))
 asp_run()
-
 
