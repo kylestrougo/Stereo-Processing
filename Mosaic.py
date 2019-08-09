@@ -91,7 +91,7 @@ def height_mosaic():
 
 
 
-	#Final file generation - heightmap vrt's
+	#Final file generation - height map vrt
 	print("\nFINAL HEIGHT FILE GENERATION\n")
 	
 	height_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_heightmap-tile-0.tif " + path + Folder + "_heightmap_longlat.tif")
@@ -165,7 +165,7 @@ def image_mosaic():
 	
 
 
-	#Final File Generation - image vrt's 
+	#Final File Generation - image vrt
 	print("\nFINAL IMAGE FILE GENERATION")	
 
 	image_vrt1 = ("gdalwarp -t_srs \"+proj=longlat\" " + path + Folder + "_texture-tile-0.tif " + path + Folder + "_texture_longlat.tif")
