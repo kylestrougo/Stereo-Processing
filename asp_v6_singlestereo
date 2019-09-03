@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # ASP version 6 - 2019
-# run this script from the directory where 2 IMG files (stereo pairs) are stored 
 # 
 
 #filenumber="${PWD##*/}"
