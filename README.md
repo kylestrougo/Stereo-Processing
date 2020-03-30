@@ -23,7 +23,8 @@ https://ti.arc.nasa.gov/tech/asr/groups/intelligent-robotics/ngt/stereo/
 * GDAL (version 3.0.1) 
  https://gdal.org/
 ---
-* Google Earth (version 7.3)
+* Google Earth Pro
+https://www.google.com/earth/versions/#download-pro
 ---
 * Sorted_Final_CTX_2019.csv
 * asp_v6_singlestereo
